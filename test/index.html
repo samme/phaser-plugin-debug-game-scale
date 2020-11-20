@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+<style>
+  #mocha {
+    font-family: system-ui, sans-serif !important;
+  }
+
+  #mocha h1 {
+    font-weight: 400 !important;
+  }
+
+  .passes::after {
+    content: "😀"
+  }
+
+  .failures::after {
+    content: "😢"
+  }
+</style>
+<title>Test of Phaser 3 Debug Game Scale Plugin</title>
+
+<body>
+  <div id="mocha"></div>
+
+  <script src="../node_modules/phaser/dist/phaser.js"></script>
+  <script src="../dist/phaser-plugin-debug-game-scale.umd.js"></script>
+  <script src="../node_modules/mocha/mocha.js"></script>
+  <script src="../node_modules/chai/chai.js"></script>
+  <script src="./test.js"></script>
+</body>

@@ -1,0 +1,62 @@
+{
+  "name": "phaser-plugin-debug-game-scale",
+  "description": "Shows Phaser 3 Scale Manager state",
+  "version": "0.1.0",
+  "main": "dist/phaser-plugin-debug-game-scale.umd.js",
+  "module": "dist/phaser-plugin-debug-game-scale.esm.js",
+  "browser": "dist/phaser-plugin-debug-game-scale.umd.js",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.3",
+    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "acorn": "^6.4.1",
+    "chai": "^4.2.0",
+    "chai-spies": "^1.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-semistandard": "^15.0.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^7.1.2",
+    "phaser": "3.24.1",
+    "rollup": "^2.7.6",
+    "rollup-plugin-serve": "^1.0.1"
+  },
+  "peerDependencies": {
+    "phaser": "^3.16.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "postbuild": "node -c dist/phaser-plugin-debug-game-scale.umd.js",
+    "preversion": "git add dist",
+    "test": "eslint src",
+    "clean": "rm dist/*.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samme/phaser-plugin-debug-game-scale.git"
+  },
+  "keywords": [
+    "phaser",
+    "phaser-plugin",
+    "phaser3",
+    "phaser3-plugin",
+    "scalemanager"
+  ],
+  "author": "samme",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samme/phaser-plugin-debug-game-scale/issues"
+  },
+  "homepage": "https://github.com/samme/phaser-plugin-debug-game-scale#readme"
+}
