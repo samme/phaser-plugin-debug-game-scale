@@ -1,8 +1,8 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import buble from '@rollup/plugin-buble';
-import serve from 'rollup-plugin-serve';
-import pkg from './package.json';
+import resolve from '@rollup/plugin-node-resolve'
+import commonjs from '@rollup/plugin-commonjs'
+import buble from '@rollup/plugin-buble'
+import serve from 'rollup-plugin-serve'
+import pkg from './package.json'
 
 export default [
   {
@@ -24,7 +24,7 @@ export default [
       resolve(),
       commonjs(),
       buble({ exclude: ['node_modules/**'] }),
-      serve({ contentBase: '', open: true, openPage: '/demo/' })
+      process.env.ROLLUP_WATCH ? serve({ contentBase: '', open: true, openPage: '/demo/' }) : null
     ]
   }
-];
+]
