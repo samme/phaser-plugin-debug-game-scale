@@ -1,7 +1,9 @@
+![](https://repository-images.githubusercontent.com/314664684/12043180-2b43-11eb-9a1c-0c838a9e3ff4)
+
 Phaser 3 Debug Game Scale Plugin
 ================================
 
-For your game scaling woes. It shows the Scale Manager state.
+For your game scaling woes. It shows the [Scale Manager](https://photonstorm.github.io/phaser3-docs/Phaser.Scale.ScaleManager.html) state. [Demo](https://codepen.io/samme/full/mdEZOoP)
 
 Use
 ---
