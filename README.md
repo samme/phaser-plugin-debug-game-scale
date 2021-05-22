@@ -11,9 +11,10 @@ Browser / UMD
 ```js
 /* global PhaserDebugGameScalePlugin */
 new Phaser.Game({
+    type: Phaser.CANVAS,
     plugins: {
         global: [
-            { key: 'PhaserDebugGameScalePlugin', plugin: PhaserDebugGameScalePlugin, start: true }
+            { key: 'DebugGameScalePlugin', plugin: PhaserDebugGameScalePlugin, start: true }
         ]
     }
 }
@@ -26,9 +27,10 @@ Module
 import DebugGameScalePlugin from 'phaser-plugin-debug-game-scale'
 
 new Phaser.Game({
+    type: Phaser.CANVAS,
     plugins: {
         global: [
-            { key: 'PhaserDebugGameScalePlugin', plugin: DebugGameScalePlugin, start: true }
+            { key: 'DebugGameScalePlugin', plugin: DebugGameScalePlugin, start: true }
         ]
     }
 }
@@ -40,7 +42,9 @@ Quick load
 ```js
 // preload()
 this.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@1.0.2', true)
+```
 
+```js
 // Console
 game.scene.getScenes(true)[0].sys.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@1.0.2', true).start()
 ```
