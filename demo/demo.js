@@ -1,4 +1,9 @@
 var scene = {
+  init: function () {
+    this.scale.displaySize.snapTo.set(256, 256)
+    this.scale.refresh()
+  },
+
   preload: function () {
     // this.load.image('bg')
   },
@@ -30,7 +35,9 @@ new Phaser.Game({
     ]
   },
   scale: {
-    mode: Phaser.Scale.FIT
+    mode: Phaser.Scale.FIT,
+    min: { width: 512, height: 384 },
+    max: { width: 2048, height: 1536 }
   },
   scene: scene
 })
