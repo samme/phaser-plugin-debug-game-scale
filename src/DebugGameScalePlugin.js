@@ -1,4 +1,4 @@
-import { aspectModeToString, rectToString, sizeToString } from './util'
+import { aspectModeToString, rectToString, sizeToString, xyToString } from './util'
 
 const { POST_RENDER } = Phaser.Core.Events
 
@@ -29,11 +29,11 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
     const sy = 1 / scale.displayScale.y
 
     gameContext.fillStyle = 'rgba(0,0,0,0.8)'
-    gameContext.fillRect(0, 0, 512, 128)
+    gameContext.fillRect(0, 0, 768, 128)
     gameContext.fillStyle = 'white'
     gameContext.font = 'caption'
 
-    gameContext.fillText(`${scale.width} × ${scale.height} @ ${sx.toFixed(3)} × ${sy.toFixed(3)} mode=${aspectModeToString(scale.scaleMode)} resolution=${scale.resolution} zoom=${scale.zoom}`, x, (y += dy))
+    gameContext.fillText(`${scale.width}×${scale.height} @ ${xyToString(sx, sy, 3)} mode=${aspectModeToString(scale.scaleMode)} zoom=${scale.zoom}`, x, (y += dy))
     gameContext.fillText(`game: ${sizeToString(scale.gameSize)}`, x, (y += dy))
     gameContext.fillText(`display: ${sizeToString(scale.displaySize)}`, x, (y += dy))
     gameContext.fillText(`parent: ${sizeToString(scale.parentSize)} ${scale.parent}`, x, (y += dy))
