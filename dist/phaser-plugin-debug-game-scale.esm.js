@@ -1,5 +1,6 @@
 var ref = Phaser.Scale;
 var ScaleModes = ref.ScaleModes;
+var MAX_VALUE = Number.MAX_VALUE;
 
 var aspectModeNames = {};
 
@@ -7,12 +8,40 @@ for (var name in ScaleModes) {
   aspectModeNames[ScaleModes[name]] = name;
 }
 
+var getSizeMaxString = function (size) {
+  return (size.maxWidth < MAX_VALUE || size.maxHeight < MAX_VALUE) ? (" max=" + (size.maxWidth) + "×" + (size.maxHeight)) : ''
+};
+
+var getSizeMinString = function (size) {
+  return (size.minWidth > 0 || size.minHeight > 0) ? (" min=" + (size.minWidth) + "×" + (size.minHeight)) : ''
+};
+
+var getSizeSnapString = function (size, precision) {
+  var ref = size.snapTo;
+  var x = ref.x;
+  var y = ref.y;
+
+  return (x === 0 && y === 0) ? '' : (" snap=" + (vectorToString(size.snapTo, precision)))
+};
+
 var aspectModeToString = function (mode) {
   return aspectModeNames[mode]
 };
 
+var vectorToString = function (vec, precision) {
+  if ( precision === void 0 ) precision = 3;
+
+  return ("(" + (vec.x.toFixed(precision)) + ", " + (vec.y.toFixed(precision)) + ")")
+};
+
+var xyToString = function (x, y, precision) {
+  if ( precision === void 0 ) precision = 3;
+
+  return ("(" + (x.toFixed(precision)) + ", " + (y.toFixed(precision)) + ")")
+};
+
 var sizeToString = function (size) {
-  return ((size.width.toFixed(1)) + " × " + (size.height.toFixed(1)) + " [" + (size.aspectRatio.toFixed(3)) + "] mode=" + (aspectModeToString(size.aspectMode)) + (size._parent ? (' ← ' + sizeToString(size._parent)) : ''))
+  return ((size.width.toFixed(1)) + "×" + (size.height.toFixed(1)) + " [" + (size.aspectRatio.toFixed(3)) + "] mode=" + (aspectModeToString(size.aspectMode)) + (getSizeMaxString(size)) + (getSizeMinString(size)) + (getSizeSnapString(size, 1)) + (size._parent ? (' ← ' + sizeToString(size._parent)) : ''))
 };
 
 var rectToString = function (rect, precision) {
@@ -61,11 +90,11 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     var sy = 1 / scale.displayScale.y;
 
     gameContext.fillStyle = 'rgba(0,0,0,0.8)';
-    gameContext.fillRect(0, 0, 512, 128);
+    gameContext.fillRect(0, 0, 768, 128);
     gameContext.fillStyle = 'white';
     gameContext.font = 'caption';
 
-    gameContext.fillText(((scale.width) + " × " + (scale.height) + " @ " + (sx.toFixed(3)) + " × " + (sy.toFixed(3)) + " mode=" + (aspectModeToString(scale.scaleMode)) + " resolution=" + (scale.resolution) + " zoom=" + (scale.zoom)), x, (y += dy));
+    gameContext.fillText(((scale.width) + "×" + (scale.height) + " @ " + (xyToString(sx, sy, 3)) + " mode=" + (aspectModeToString(scale.scaleMode)) + " zoom=" + (scale.zoom)), x, (y += dy));
     gameContext.fillText(("game: " + (sizeToString(scale.gameSize))), x, (y += dy));
     gameContext.fillText(("display: " + (sizeToString(scale.displaySize))), x, (y += dy));
     gameContext.fillText(("parent: " + (sizeToString(scale.parentSize)) + " " + (scale.parent)), x, (y += dy));
