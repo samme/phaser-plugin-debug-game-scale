@@ -1,7 +1,7 @@
 {
   "name": "phaser-plugin-debug-game-scale",
   "description": "Shows Phaser 3 Scale Manager state",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "main": "dist/phaser-plugin-debug-game-scale.umd.js",
   "module": "dist/phaser-plugin-debug-game-scale.esm.js",
   "browser": "dist/phaser-plugin-debug-game-scale.umd.js",

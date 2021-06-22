@@ -88,24 +88,39 @@
       var ref = this.game;
       var scale = ref.scale;
       var ref$1 = this.game.renderer;
-      var gameContext = ref$1.gameContext;
-      var x = 8;
-      var y = 4;
+      var c = ref$1.gameContext;
+      var cx = 0.5 * scale.width;
+      var cy = 0.5 * scale.height;
+      var w = 512;
+      var h = 128;
+      var x = cx - 0.5 * w;
+      var y = cy - 0.5 * h;
       var dy = 16;
       var sx = 1 / scale.displayScale.x;
       var sy = 1 / scale.displayScale.y;
 
-      gameContext.fillStyle = 'rgba(0,0,0,0.8)';
-      gameContext.fillRect(0, 0, 768, 128);
-      gameContext.fillStyle = 'white';
-      gameContext.font = 'caption';
+      c.strokeStyle = 'white';
+      c.beginPath();
+      c.moveTo(0, 0);
+      c.lineTo(scale.width, scale.height);
+      c.stroke();
+      c.beginPath();
+      c.moveTo(0, scale.height);
+      c.lineTo(scale.width, 0);
+      c.stroke();
+      c.fillStyle = 'rgba(0,0,0,0.8)';
+      c.fillRect(x, y, w, h);
+      c.fillStyle = 'white';
+      c.font = 'caption';
 
-      gameContext.fillText(((scale.width) + "×" + (scale.height) + " @ " + (xyToString(sx, sy, 3)) + " mode=" + (aspectModeToString(scale.scaleMode)) + " zoom=" + (scale.zoom)), x, (y += dy));
-      gameContext.fillText(("game: " + (sizeToString(scale.gameSize))), x, (y += dy));
-      gameContext.fillText(("display: " + (sizeToString(scale.displaySize))), x, (y += dy));
-      gameContext.fillText(("parent: " + (sizeToString(scale.parentSize)) + " " + (scale.parent)), x, (y += dy));
-      gameContext.fillText(("canvas: " + (rectToString(scale.canvasBounds))), x, (y += dy));
-      gameContext.fillText(("orientation: " + (scale.orientation)), x, (y += dy));
+      x += 8;
+
+      c.fillText(((scale.width) + "×" + (scale.height) + " @ " + (xyToString(sx, sy, 3)) + " mode=" + (aspectModeToString(scale.scaleMode)) + " zoom=" + (scale.zoom)), x, (y += dy));
+      c.fillText(("game: " + (sizeToString(scale.gameSize))), x, (y += dy));
+      c.fillText(("display: " + (sizeToString(scale.displaySize))), x, (y += dy));
+      c.fillText(("parent: " + (sizeToString(scale.parentSize)) + " " + (scale.parent)), x, (y += dy));
+      c.fillText(("canvas: " + (rectToString(scale.canvasBounds))), x, (y += dy));
+      c.fillText(("orientation: " + (scale.orientation)), x, (y += dy));
     };
 
     return DebugGameScalePlugin;
