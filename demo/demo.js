@@ -1,7 +1,5 @@
 var scene = {
   init: function () {
-    this.scale.displaySize.snapTo.set(256, 256)
-    this.scale.refresh()
   },
 
   preload: function () {
@@ -35,9 +33,10 @@ new Phaser.Game({
     ]
   },
   scale: {
-    mode: Phaser.Scale.FIT,
+    mode: Phaser.Scale.ENVELOP,
     min: { width: 512, height: 384 },
-    max: { width: 2048, height: 1536 }
+    max: { width: 2048, height: 1536 },
+    autoCenter: Phaser.Scale.CENTER_BOTH
   },
   scene: scene
 })
