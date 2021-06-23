@@ -79,6 +79,8 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
   };
 
   DebugGameScalePlugin.prototype.render = function render () {
+    var devicePixelRatio = window.devicePixelRatio;
+    var screen = window.screen;
     var ref = this.game;
     var scale = ref.scale;
     var ref$1 = this.game.renderer;
@@ -114,6 +116,7 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     c.fillText(("display: " + (sizeToString(scale.displaySize))), x, (y += dy));
     c.fillText(("parent: " + (sizeToString(scale.parentSize)) + " " + (scale.parent)), x, (y += dy));
     c.fillText(("canvas: " + (rectToString(scale.canvasBounds))), x, (y += dy));
+    if (screen) { c.fillText(("screen: " + (screen.width) + "×" + (screen.height) + " [" + ((screen.width / screen.height).toFixed(3)) + "] DPR=" + devicePixelRatio), x, (y += dy)); }
     c.fillText(("orientation: " + (scale.orientation)), x, (y += dy));
   };
 
