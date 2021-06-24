@@ -1,4 +1,4 @@
-![](https://repository-images.githubusercontent.com/314664684/12043180-2b43-11eb-9a1c-0c838a9e3ff4)
+![](https://repository-images.githubusercontent.com/314664684/cf308080-d4ba-11eb-8edd-6786eb2fc0d2)
 
 Phaser 3 Debug Game Scale Plugin
 ================================
