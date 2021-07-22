@@ -13,10 +13,22 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
 
   start () {
     this.game.events.on(POST_RENDER, this.render, this)
+
+    const { parent } = this.game.scale
+
+    if (parent) {
+      parent.style.outline = 'thick solid rgba(255,0,0,0.5)'
+    }
   }
 
   stop () {
     this.game.events.off(POST_RENDER, this.render, this)
+
+    const { parent } = this.game.scale
+
+    if (parent) {
+      parent.style.outline = ''
+    }
   }
 
   render () {
