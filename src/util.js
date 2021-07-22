@@ -7,6 +7,11 @@ for (const name in ScaleModes) {
   aspectModeNames[ScaleModes[name]] = name
 }
 
+const orientationNames = {
+  [Phaser.Scale.Orientation.LANDSCAPE]: 'landscape',
+  [Phaser.Scale.Orientation.PORTRAIT]: 'portrait'
+}
+
 const getSizeMaxString = function (size) {
   return (size.maxWidth < MAX_VALUE || size.maxHeight < MAX_VALUE) ? ` max=${size.maxWidth}×${size.maxHeight}` : ''
 }
@@ -39,4 +44,28 @@ export const sizeToString = function (size) {
 
 export const rectToString = function (rect, precision = 1) {
   return `x=${rect.x.toFixed(precision)} y=${rect.y.toFixed(precision)} w=${rect.width.toFixed(precision)} h=${rect.height.toFixed(precision)}`
+}
+
+export const logEnterFullscreen = function () {
+  console.info('enter fullscreen')
+}
+
+export const logFullscreenFailed = function () {
+  console.info('fullscreen failed')
+}
+
+export const logFullscreenUnsupported = function () {
+  console.info('fullscreen unsupported')
+}
+
+export const logLeaveFullscreen = function () {
+  console.info('leave fullscreen')
+}
+
+export const logOrientationChange = function (orientation) {
+  console.info('orientation change', orientationNames[orientation])
+}
+
+export const logResize = function (game, base, display, prevWidth, prevHeight) {
+  console.debug('resize', sizeToString(display))
 }

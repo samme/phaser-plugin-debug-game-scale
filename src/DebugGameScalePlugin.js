@@ -1,6 +1,8 @@
-import { aspectModeToString, rectToString, sizeToString, xyToString } from './util'
+import { aspectModeToString, rectToString, sizeToString, xyToString, logEnterFullscreen, logFullscreenFailed, logFullscreenUnsupported, logLeaveFullscreen, logOrientationChange, logResize } from './util'
 
 const { POST_RENDER } = Phaser.Core.Events
+
+const { ENTER_FULLSCREEN, FULLSCREEN_FAILED, FULLSCREEN_UNSUPPORTED, LEAVE_FULLSCREEN, ORIENTATION_CHANGE, RESIZE } = Phaser.Scale.Events
 
 export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
   init (data) {
@@ -13,10 +15,24 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
 
   start () {
     this.game.events.on(POST_RENDER, this.render, this)
+    this.game.scale
+      .on(ENTER_FULLSCREEN, logEnterFullscreen)
+      .on(FULLSCREEN_FAILED, logFullscreenFailed)
+      .on(FULLSCREEN_UNSUPPORTED, logFullscreenUnsupported)
+      .on(LEAVE_FULLSCREEN, logLeaveFullscreen)
+      .on(ORIENTATION_CHANGE, logOrientationChange)
+      .on(RESIZE, logResize)
   }
 
   stop () {
     this.game.events.off(POST_RENDER, this.render, this)
+    this.game.scale
+      .off(ENTER_FULLSCREEN, logEnterFullscreen)
+      .off(FULLSCREEN_FAILED, logFullscreenFailed)
+      .off(FULLSCREEN_UNSUPPORTED, logFullscreenUnsupported)
+      .off(LEAVE_FULLSCREEN, logLeaveFullscreen)
+      .off(ORIENTATION_CHANGE, logOrientationChange)
+      .off(RESIZE, logResize)
   }
 
   render () {
