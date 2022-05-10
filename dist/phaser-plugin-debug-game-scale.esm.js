@@ -89,8 +89,8 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     var cy = 0.5 * scale.height;
     var w = 512;
     var h = 128;
-    var x = cx - 0.5 * w;
-    var y = cy - 0.5 * h;
+    var x = ~~Math.max(0, cx - 0.5 * w);
+    var y = ~~Math.max(0, cy - 0.5 * h);
     var dy = 16;
     var sx = 1 / scale.displayScale.x;
     var sy = 1 / scale.displayScale.y;
@@ -116,8 +116,10 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     c.fillText(("display: " + (sizeToString(scale.displaySize))), x, (y += dy));
     c.fillText(("parent: " + (sizeToString(scale.parentSize)) + " " + (scale.parent)), x, (y += dy));
     c.fillText(("canvas: " + (rectToString(scale.canvasBounds))), x, (y += dy));
-    if (screen) { c.fillText(("screen: " + (screen.width) + "×" + (screen.height) + " [" + ((screen.width / screen.height).toFixed(3)) + "] DPR=" + devicePixelRatio), x, (y += dy)); }
     c.fillText(("orientation: " + (scale.orientation)), x, (y += dy));
+    if (screen) {
+      c.fillText(("screen: " + (screen.width) + "×" + (screen.height) + " [" + ((screen.width / screen.height).toFixed(3)) + "] DPR=" + devicePixelRatio), x, (y += dy));
+    }
   };
 
   return DebugGameScalePlugin;
