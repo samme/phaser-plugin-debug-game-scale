@@ -27,8 +27,8 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
     const cy = 0.5 * scale.height
     const w = 512
     const h = 128
-    let x = cx - 0.5 * w
-    let y = cy - 0.5 * h
+    let x = ~~Math.max(0, cx - 0.5 * w)
+    let y = ~~Math.max(0, cy - 0.5 * h)
     const dy = 16
     const sx = 1 / scale.displayScale.x
     const sy = 1 / scale.displayScale.y
