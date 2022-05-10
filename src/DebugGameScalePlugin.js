@@ -54,7 +54,9 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
     c.fillText(`display: ${sizeToString(scale.displaySize)}`, x, (y += dy))
     c.fillText(`parent: ${sizeToString(scale.parentSize)} ${scale.parent}`, x, (y += dy))
     c.fillText(`canvas: ${rectToString(scale.canvasBounds)}`, x, (y += dy))
-    if (screen) c.fillText(`screen: ${screen.width}×${screen.height} [${(screen.width / screen.height).toFixed(3)}] DPR=${devicePixelRatio}`, x, (y += dy))
     c.fillText(`orientation: ${scale.orientation}`, x, (y += dy))
+    if (screen) {
+      c.fillText(`screen: ${screen.width}×${screen.height} [${(screen.width / screen.height).toFixed(3)}] DPR=${devicePixelRatio}`, x, (y += dy))
+    }
   }
 }
