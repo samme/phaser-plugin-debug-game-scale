@@ -33,7 +33,10 @@ new Phaser.Game({
     ]
   },
   scale: {
+    // width: 256, height: 192,
+    // mode: Phaser.Scale.FIT,
     mode: Phaser.Scale.ENVELOP,
+    // mode: Phaser.Scale.RESIZE,
     min: { width: 512, height: 384 },
     max: { width: 2048, height: 1536 },
     autoCenter: Phaser.Scale.CENTER_BOTH
