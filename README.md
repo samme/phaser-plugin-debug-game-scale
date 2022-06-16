@@ -3,7 +3,7 @@
 Phaser 3 Debug Game Scale Plugin
 ================================
 
-For your game scaling woes. It shows the [Scale Manager](https://photonstorm.github.io/phaser3-docs/Phaser.Scale.ScaleManager.html) state. [Demo](https://codepen.io/samme/full/mdEZOoP)
+For your game scaling woes. It shows the [Scale Manager](https://newdocs.phaser.io/docs/3.55.2/Phaser.Scale.ScaleManager) state and logs [events](https://newdocs.phaser.io/docs/3.54.0/Phaser.Scale.Events). See [demos](https://codepen.io/collection/aMWjwK).
 
 Browser / UMD
 -------------
