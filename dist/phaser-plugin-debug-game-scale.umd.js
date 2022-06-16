@@ -14,6 +14,10 @@
     aspectModeNames[ScaleModes[name]] = name;
   }
 
+  var orientationNames = {};
+  orientationNames[Phaser.Scale.Orientation.LANDSCAPE] = 'landscape';
+  orientationNames[Phaser.Scale.Orientation.PORTRAIT] = 'portrait';
+
   var getSizeMaxString = function (size) {
     return (size.maxWidth < MAX_VALUE || size.maxHeight < MAX_VALUE) ? (" max=" + (size.maxWidth) + "×" + (size.maxHeight)) : ''
   };
@@ -56,8 +60,40 @@
     return ("x=" + (rect.x.toFixed(precision)) + " y=" + (rect.y.toFixed(precision)) + " w=" + (rect.width.toFixed(precision)) + " h=" + (rect.height.toFixed(precision)))
   };
 
+  var logEnterFullscreen = function () {
+    console.info('enter fullscreen');
+  };
+
+  var logFullscreenFailed = function () {
+    console.info('fullscreen failed');
+  };
+
+  var logFullscreenUnsupported = function () {
+    console.info('fullscreen unsupported');
+  };
+
+  var logLeaveFullscreen = function () {
+    console.info('leave fullscreen');
+  };
+
+  var logOrientationChange = function (orientation) {
+    console.info('orientation change', orientationNames[orientation]);
+  };
+
+  var logResize = function (game, base, display, prevWidth, prevHeight) {
+    console.debug('resize', sizeToString(display));
+  };
+
   var ref$1 = Phaser.Core.Events;
   var POST_RENDER = ref$1.POST_RENDER;
+
+  var ref$1$1 = Phaser.Scale.Events;
+  var ENTER_FULLSCREEN = ref$1$1.ENTER_FULLSCREEN;
+  var FULLSCREEN_FAILED = ref$1$1.FULLSCREEN_FAILED;
+  var FULLSCREEN_UNSUPPORTED = ref$1$1.FULLSCREEN_UNSUPPORTED;
+  var LEAVE_FULLSCREEN = ref$1$1.LEAVE_FULLSCREEN;
+  var ORIENTATION_CHANGE = ref$1$1.ORIENTATION_CHANGE;
+  var RESIZE = ref$1$1.RESIZE;
 
   var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     function DebugGameScalePlugin () {
@@ -78,10 +114,40 @@
 
     DebugGameScalePlugin.prototype.start = function start () {
       this.game.events.on(POST_RENDER, this.render, this);
+
+      var ref = this.game.scale;
+      var parent = ref.parent;
+
+      if (parent) {
+        parent.style.outline = 'thick solid rgba(255,0,0,0.5)';
+      }
+
+      this.game.scale
+        .on(ENTER_FULLSCREEN, logEnterFullscreen)
+        .on(FULLSCREEN_FAILED, logFullscreenFailed)
+        .on(FULLSCREEN_UNSUPPORTED, logFullscreenUnsupported)
+        .on(LEAVE_FULLSCREEN, logLeaveFullscreen)
+        .on(ORIENTATION_CHANGE, logOrientationChange)
+        .on(RESIZE, logResize);
     };
 
     DebugGameScalePlugin.prototype.stop = function stop () {
       this.game.events.off(POST_RENDER, this.render, this);
+
+      var ref = this.game.scale;
+      var parent = ref.parent;
+
+      if (parent) {
+        parent.style.outline = '';
+      }
+
+      this.game.scale
+        .off(ENTER_FULLSCREEN, logEnterFullscreen)
+        .off(FULLSCREEN_FAILED, logFullscreenFailed)
+        .off(FULLSCREEN_UNSUPPORTED, logFullscreenUnsupported)
+        .off(LEAVE_FULLSCREEN, logLeaveFullscreen)
+        .off(ORIENTATION_CHANGE, logOrientationChange)
+        .off(RESIZE, logResize);
     };
 
     DebugGameScalePlugin.prototype.render = function render () {
