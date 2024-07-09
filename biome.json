@@ -10,6 +10,9 @@
 		"enabled": true,
 		"rules": {
 			"recommended": true,
+			"complexity": {
+				"useArrowFunction": "off"
+			},
 			"suspicious": {
 				"noAssignInExpressions": "off"
 			}
