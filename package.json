@@ -23,7 +23,7 @@
     "dev": "rollup -c -w",
     "postbuild": "node -c dist/phaser-plugin-debug-game-scale.umd.js",
     "preversion": "npm run build && git add dist",
-    "test": "eslint src",
+    "test": "npx @biomejs/biome lint src",
     "clean": "rm dist/*.js"
   },
   "files": [
