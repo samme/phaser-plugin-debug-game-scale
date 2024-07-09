@@ -1,6 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import buble from '@rollup/plugin-buble'
 import pkg from './package.json'
 
 export default [
@@ -22,7 +21,6 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      buble({ exclude: ['node_modules/**'] })
     ]
   }
 ]
