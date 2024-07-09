@@ -7,8 +7,8 @@ describe('Phaser', function () {
     assert.isObject(Phaser)
   })
 
-  it('is v3.55.2', function () {
-    assert.propertyVal(Phaser, 'VERSION', '3.55.2')
+  it('is v3.80.1', function () {
+    assert.propertyVal(Phaser, 'VERSION', '3.80.1')
   })
 })
 
