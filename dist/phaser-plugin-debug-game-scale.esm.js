@@ -145,10 +145,11 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
   };
 
   DebugGameScalePlugin.prototype.render = function render () {
-    var devicePixelRatio = window.devicePixelRatio;
-    var screen = window.screen;
     var ref = this.game;
     var scale = ref.scale;
+    var devicePixelRatio = window.devicePixelRatio;
+    var screen = window.screen;
+    var visualViewport = window.visualViewport;
     var ref$1 = this.game.renderer;
     var c = ref$1.gameContext;
     var cx = 0.5 * scale.width;
@@ -157,7 +158,7 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     var h = 128;
     var x = ~~Math.max(0, cx - 0.5 * w);
     var y = ~~Math.max(0, cy - 0.5 * h);
-    var dy = 16;
+    var dy = 15;
     var sx = 1 / scale.displayScale.x;
     var sy = 1 / scale.displayScale.y;
 
@@ -185,6 +186,15 @@ var DebugGameScalePlugin = /*@__PURE__*/(function (superclass) {
     c.fillText(("orientation: " + (scale.orientation)), x, (y += dy));
     if (screen) {
       c.fillText(("screen: " + (screen.width) + "×" + (screen.height) + " [" + ((screen.width / screen.height).toFixed(3)) + "] DPR=" + devicePixelRatio), x, (y += dy));
+    }
+    if (visualViewport) {
+      var offsetLeft = visualViewport.offsetLeft;
+      var offsetTop = visualViewport.offsetTop;
+      var width = visualViewport.width;
+      var height = visualViewport.height;
+      var scale$1 = visualViewport.scale;
+
+      c.fillText(("visualViewport: offsetLeft=" + offsetLeft + " offsetTop=" + offsetTop + " width=" + width + ", height=" + height + " scale=" + scale$1), x, (y += dy));
     }
   };
 
