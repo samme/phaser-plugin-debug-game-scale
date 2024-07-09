@@ -39,7 +39,7 @@ export const xyToString = function (x, y, precision = 3) {
 }
 
 export const sizeToString = function (size) {
-  return `${size.width.toFixed(1)}×${size.height.toFixed(1)} [${size.aspectRatio.toFixed(3)}] mode=${aspectModeToString(size.aspectMode)}${getSizeMaxString(size)}${getSizeMinString(size)}${getSizeSnapString(size, 1)}${size._parent ? (' ← ' + sizeToString(size._parent)) : ''}`
+  return `${size.width.toFixed(1)}×${size.height.toFixed(1)} [${size.aspectRatio.toFixed(3)}] mode=${aspectModeToString(size.aspectMode)}${getSizeMaxString(size)}${getSizeMinString(size)}${getSizeSnapString(size, 1)}${size._parent ? (` ← ${sizeToString(size._parent)}`) : ''}`
 }
 
 export const rectToString = function (rect, precision = 1) {
