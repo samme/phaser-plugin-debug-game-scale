@@ -1,4 +1,4 @@
-import { aspectModeToString, rectToString, sizeToString, vectorToString, xyToString, logEnterFullscreen, logFullscreenFailed, logFullscreenUnsupported, logLeaveFullscreen, logOrientationChange, logResize } from './util'
+import { aspectModeToString, rectToString, sizeToString, xyToString, logEnterFullscreen, logFullscreenFailed, logFullscreenUnsupported, logLeaveFullscreen, logOrientationChange, logResize } from './util'
 
 const { POST_RENDER } = Phaser.Core.Events
 
@@ -59,7 +59,7 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
     const h = 128
     let x = ~~Math.max(0, cx - 0.5 * w)
     let y = ~~Math.max(0, cy - 0.5 * h)
-    const dy = 16
+    const dy = 15
     const sx = 1 / scale.displayScale.x
     const sy = 1 / scale.displayScale.y
 
@@ -89,9 +89,9 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
       c.fillText(`screen: ${screen.width}×${screen.height} [${(screen.width / screen.height).toFixed(3)}] DPR=${devicePixelRatio}`, x, (y += dy))
     }
     if (visualViewport) {
-      const { offsetLeft, offsetTop, width, height } = visualViewport;
+      const { offsetLeft, offsetTop, width, height, scale } = visualViewport
 
-      c.fillText(`visualViewport: ${offsetLeft}, ${offsetTop},  ${width}, ${height}`, x, (y += dy))
+      c.fillText(`visualViewport: offsetLeft=${offsetLeft} offsetTop=${offsetTop} width=${width}, height=${height} scale=${scale}`, x, (y += dy))
     }
   }
 }
