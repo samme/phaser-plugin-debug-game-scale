@@ -1,9 +1,0 @@
-env:
-  browser: yes
-  es6: no
-extends: standard
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-  Phaser: readonly
-  PhaserDebugGameScalePlugin: readonly

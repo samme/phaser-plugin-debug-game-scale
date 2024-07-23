@@ -13,15 +13,14 @@ new Phaser.Game({
   backgroundColor: 0x555555,
   plugins: {
     global: [
-      { key: 'PhaserDebugGameScalePlugin', plugin: PhaserDebugGameScalePlugin, start: true }
+      { key: 'PhaserDebugGameScalePlugin', plugin: PhaserDebugGameScalePlugin, start: true, data: { x: 0, y: 0 } }
     ]
   },
   scale: {
     width: 800, height: 600,
-    mode: Phaser.Scale.FIT,
+    mode: Phaser.Scale.RESIZE,
     min: { width: 400, height: 300 },
     max: { width: 1600, height: 1200 },
-    autoCenter: Phaser.Scale.CENTER_BOTH
   },
   scene: scene
 });

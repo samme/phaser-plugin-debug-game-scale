@@ -18,9 +18,7 @@ new Phaser.Game({
   },
   scale: {
     width: 800, height: 600,
-    mode: Phaser.Scale.FIT,
-    min: { width: 400, height: 300 },
-    max: { width: 1600, height: 1200 },
+    mode: Phaser.Scale.ENVELOP,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },
   scene: scene
