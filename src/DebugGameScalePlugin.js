@@ -27,8 +27,6 @@ export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
 
     for (const dataKey in data) {
       if (this.hasOwnProperty(dataKey)) {
-        console.debug(dataKey, data[dataKey]);
-
         this[dataKey] = data[dataKey]
       }
     }
