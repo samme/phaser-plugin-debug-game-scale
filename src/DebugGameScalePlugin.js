@@ -5,18 +5,21 @@ const { POST_RENDER } = Phaser.Core.Events
 const { ENTER_FULLSCREEN, FULLSCREEN_FAILED, FULLSCREEN_UNSUPPORTED, LEAVE_FULLSCREEN, ORIENTATION_CHANGE, RESIZE } = Phaser.Scale.Events
 
 export default class DebugGameScalePlugin extends Phaser.Plugins.BasePlugin {
-  x = null;
-  y = null;
-  width = 512;
-  height = 128;
-  font = '12px system-ui, sans-serif';
-  lineHeight = 16;
-  color = 'white';
-  shadowBlur = 0
-  shadowOffsetX = 1
-  shadowOffsetY = 1
-  shadowColor = 'black'
+  constructor(pluginManager) {
+    super(pluginManager);
 
+    this.x = null;
+    this.y = null;
+    this.width = 512;
+    this.height = 128;
+    this.font = '12px system-ui, sans-serif';
+    this.lineHeight = 16;
+    this.color = 'white';
+    this.shadowBlur = 0;
+    this.shadowOffsetX = 1;
+    this.shadowOffsetY = 1;
+    this.shadowColor = 'black';
+  }
 
   init (data) {
     if (!this.game.renderer.gameCanvas) {
