@@ -8,6 +8,10 @@ For your game scaling woes. It shows the [Scale Manager](https://newdocs.phaser.
 Browser / UMD
 -------------
 
+```html
+<script src="https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0"></script>
+```
+
 ```js
 /* global PhaserDebugGameScalePlugin */
 
