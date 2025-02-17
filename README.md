@@ -1,14 +1,14 @@
-![](https://repository-images.githubusercontent.com/314664684/cf308080-d4ba-11eb-8edd-6786eb2fc0d2)
+![](https://repository-images.githubusercontent.com/314664684/acc710d3-9255-4c73-9a6b-b2cf21483240)
 
 Phaser 3 Debug Game Scale Plugin
 ================================
 
-For your game scaling woes. It shows the [Scale Manager](https://newdocs.phaser.io/docs/3.80.1/Phaser.Scale.ScaleManager) state and logs [events](https://newdocs.phaser.io/docs/3.80.1/Phaser.Scale.Events). See [demos](https://codepen.io/collection/aMWjwK).
+For your game scaling woes. It shows the [Scale Manager](https://docs.phaser.io/api-documentation/class/scale-scalemanager) state and logs [events](https://docs.phaser.io/api-documentation/event/scale-events). See [demos](https://codepen.io/collection/aMWjwK).
 
 Quick load
 ----------
 
-You must use the `Phaser.CANVAS` renderer.
+You must use `type: Phaser.CANVAS` in the game config.
 
 ### In `preload()`
 
