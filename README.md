@@ -5,10 +5,28 @@ Phaser 3 Debug Game Scale Plugin
 
 For your game scaling woes. It shows the [Scale Manager](https://newdocs.phaser.io/docs/3.80.1/Phaser.Scale.ScaleManager) state and logs [events](https://newdocs.phaser.io/docs/3.80.1/Phaser.Scale.Events). See [demos](https://codepen.io/collection/aMWjwK).
 
-Browser / UMD
--------------
+Quick load
+----------
+
+You must use the `Phaser.CANVAS` renderer.
+
+### In `preload()`
+
+```js
+this.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0', true)
+```
+
+### In console
+
+```js
+game.scene.getScenes(true)[0].sys.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0', true).start()
+```
+
+Script tags / UMD
+-----------------
 
 ```html
+<!-- after phaser.js -->
 <script src="https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0"></script>
 ```
 
@@ -39,21 +57,4 @@ new Phaser.Game({
         ]
     }
 }
-```
-
-Quick load
-----------
-
-You must use the `Phaser.CANVAS` renderer.
-
-```js
-// In preload():
-
-this.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0', true)
-```
-
-```js
-// In console:
-
-game.scene.getScenes(true)[0].sys.load.plugin('PhaserDebugGameScalePlugin', 'https://cdn.jsdelivr.net/npm/phaser-plugin-debug-game-scale@4.1.0', true).start()
 ```
